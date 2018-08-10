@@ -26,8 +26,8 @@ int main(int argc, char** argv)
   ros::init(argc, argv, "image_publisher");
   ros::NodeHandle nh;
   image_transport::ImageTransport it(nh);
-  image_transport::Publisher pub_left = it.advertise("camera/image/left", 1);
-  image_transport::Publisher pub_right = it.advertise("camera/image/right", 1);
+  image_transport::Publisher pub_left = it.advertise("/apollo/sensor/camera/perception/image_front_left_side", 1);
+  image_transport::Publisher pub_right = it.advertise("/apollo/sensor/camera/perception/image_front_right_side", 1);
   vector<std::string> files_left = globVector(std::string(argv[1])+"/*");
   vector<std::string> files_right = globVector(std::string(argv[2])+"/*");
   std::cout<< "Number of images to be sent" << files_left.size() << std::endl;

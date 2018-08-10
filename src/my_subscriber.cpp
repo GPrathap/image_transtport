@@ -57,7 +57,7 @@ int main(int argc, char **argv)
   cv::startWindowThread();
   image_transport::ImageTransport it(nh);
     callback boundImageCallback = boost::bind(&myImages::imageCallback, &MyImagesObj, _1);
-  image_transport::Subscriber sub = it.subscribe("camera/image/"+std::string(argv[1]), 1, boundImageCallback);
+  image_transport::Subscriber sub = it.subscribe("/apollo/sensor/camera/perception/"+std::string(argv[1]), 1, boundImageCallback);
   ros::spin();
   cv::destroyWindow("view"+std::string(argv[1]));
 }
